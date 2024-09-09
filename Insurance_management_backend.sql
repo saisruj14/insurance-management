@@ -13,30 +13,11 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `imsdb`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
 CREATE TABLE `category` (
   `ID` int(11) NOT NULL,
   `CategoryName` varchar(45) DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `category`
---
 
 INSERT INTO `category` (`ID`, `CategoryName`, `CreationDate`) VALUES
 (1, 'Health Insurance', '2019-02-09 18:30:00'),
@@ -48,11 +29,6 @@ INSERT INTO `category` (`ID`, `CategoryName`, `CreationDate`) VALUES
 (8, 'Demo Cat', '2019-02-21 17:07:16'),
 (9, 'test category', '2019-02-21 17:20:13');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tblimsadmin`
---
 
 CREATE TABLE `tblimsadmin` (
   `ID` int(11) NOT NULL,
@@ -62,18 +38,10 @@ CREATE TABLE `tblimsadmin` (
   `AdminRegdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblimsadmin`
---
 
 INSERT INTO `tblimsadmin` (`ID`, `AdminName`, `AdminUsername`, `Password`, `AdminRegdate`) VALUES
 (1, 'Sarita', 'Admin', 'Test@123', '2019-02-10 18:30:00');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tblpolicy`
---
 
 CREATE TABLE `tblpolicy` (
   `ID` int(11) NOT NULL,
@@ -86,10 +54,6 @@ CREATE TABLE `tblpolicy` (
   `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblpolicy`
---
-
 INSERT INTO `tblpolicy` (`ID`, `SubcategoryId`, `CategoryId`, `PolicyName`, `Sumassured`, `Premium`, `Tenure`, `CreationDate`) VALUES
 (8, '5', '1', 'Jeevan1.1', 500000, '500', 12, '2019-02-14 15:18:29'),
 (9, '20', '3', 'Jeevan Dhara', 800000, '500 p/m', 10, '2019-02-18 13:06:48'),
@@ -98,11 +62,7 @@ INSERT INTO `tblpolicy` (`ID`, `SubcategoryId`, `CategoryId`, `PolicyName`, `Sum
 (12, '7', '1', 'test policy', 500000, '4250', 15, '2019-02-21 17:08:58'),
 (13, '17', '5', 'demo policy', 1000000, '54244', 15, '2019-02-21 17:22:11');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `tblpolicyholder`
---
 
 CREATE TABLE `tblpolicyholder` (
   `ID` int(11) NOT NULL,
@@ -114,20 +74,12 @@ CREATE TABLE `tblpolicyholder` (
   `UpdationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblpolicyholder`
---
-
 INSERT INTO `tblpolicyholder` (`ID`, `UserId`, `PolicyId`, `PolicyNumber`, `PolicyApplyDate`, `PolicyStatus`, `UpdationDate`) VALUES
 (2, '2', '8', '618412450', '2019-02-17 18:34:03', 2, '2019-02-18 10:16:56'),
 (3, '2', '9', '772157660', '2019-02-18 16:33:44', 1, '2019-02-18 16:36:27'),
 (5, '14', '13', '984815191', '2019-02-21 17:23:54', 1, '2019-02-21 17:28:46');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `tblsubcategory`
---
 
 CREATE TABLE `tblsubcategory` (
   `id` int(11) NOT NULL,
@@ -137,9 +89,6 @@ CREATE TABLE `tblsubcategory` (
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblsubcategory`
---
 
 INSERT INTO `tblsubcategory` (`id`, `CategoryId`, `SubcategoryName`, `CreationDate`, `UpdationDate`) VALUES
 (5, '1', 'Health Maintenance Organization (HMO) plans', '2019-02-14 06:58:18', NULL),
@@ -173,12 +122,6 @@ INSERT INTO `tblsubcategory` (`id`, `CategoryId`, `SubcategoryName`, `CreationDa
 (33, '5', 'Demo subcat test', '2019-02-21 17:07:54', '2019-02-21 17:08:09'),
 (34, '9', 'test scatgry', '2019-02-21 17:20:48', '2019-02-21 17:21:02');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tblticket`
---
-
 CREATE TABLE `tblticket` (
   `ID` int(11) NOT NULL,
   `UserId` varchar(25) DEFAULT NULL,
@@ -190,9 +133,6 @@ CREATE TABLE `tblticket` (
   `AdminRemarkdate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblticket`
---
 
 INSERT INTO `tblticket` (`ID`, `UserId`, `Subject`, `NatureofIssue`, `Description`, `AdminRemark`, `TicketGenerationDate`, `AdminRemarkdate`) VALUES
 (3, '7', 'Claim Issue', 'claim  issue', 'Please go through my policy and tell me my claim amount.', 'Issue has been resolve soon.', '2019-02-16 15:39:58', '2019-02-16 18:16:29'),
@@ -201,11 +141,6 @@ INSERT INTO `tblticket` (`ID`, `UserId`, `Subject`, `NatureofIssue`, `Descriptio
 (6, '5', 'Claim Issue', 'claim  issue', 'bgjhgjkj', NULL, '2019-02-16 16:12:55', NULL),
 (7, '14', 'premium issue', 'Other', 'This is sample text for testing.', 'Your issue solved', '2019-02-21 17:29:52', '2019-02-21 17:30:34');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tbluser`
---
 
 CREATE TABLE `tbluser` (
   `ID` int(11) NOT NULL,
@@ -217,9 +152,6 @@ CREATE TABLE `tbluser` (
   `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbluser`
---
 
 INSERT INTO `tbluser` (`ID`, `FullName`, `ContactNo`, `Email`, `Gender`, `Password`, `CreationDate`) VALUES
 (2, 'Manu sharma', 8285099422, 'manu@gmail.com', 'Male', 'Test@123', '2019-02-13 07:07:39'),
@@ -232,100 +164,53 @@ INSERT INTO `tbluser` (`ID`, `FullName`, `ContactNo`, `Email`, `Gender`, `Passwo
 (11, 'dfsdfsdf', 2144444444, 'ddasd@jdjasdj.com', 'Male', '1', '2019-02-14 16:48:02'),
 (14, 'Demo user', 4324234234, 'testuser@gmail.com', 'Male', 'Test@123', '2019-02-21 17:22:59');
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `category`
---
 ALTER TABLE `category`
   ADD PRIMARY KEY (`ID`);
 
---
--- Indexes for table `tblimsadmin`
---
+
 ALTER TABLE `tblimsadmin`
   ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblpolicy`
---
+-
 ALTER TABLE `tblpolicy`
   ADD PRIMARY KEY (`ID`);
 
---
--- Indexes for table `tblpolicyholder`
---
 ALTER TABLE `tblpolicyholder`
   ADD PRIMARY KEY (`ID`);
 
---
--- Indexes for table `tblsubcategory`
---
 ALTER TABLE `tblsubcategory`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `tblticket`
---
+
 ALTER TABLE `tblticket`
   ADD PRIMARY KEY (`ID`);
 
---
--- Indexes for table `tbluser`
---
 ALTER TABLE `tbluser`
   ADD PRIMARY KEY (`ID`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `category`
---
 ALTER TABLE `category`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT for table `tblimsadmin`
---
+
 ALTER TABLE `tblimsadmin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- AUTO_INCREMENT for table `tblpolicy`
---
 ALTER TABLE `tblpolicy`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
---
--- AUTO_INCREMENT for table `tblpolicyholder`
---
 ALTER TABLE `tblpolicyholder`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT for table `tblsubcategory`
---
 ALTER TABLE `tblsubcategory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
---
--- AUTO_INCREMENT for table `tblticket`
---
 ALTER TABLE `tblticket`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT for table `tbluser`
---
+
 ALTER TABLE `tbluser`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
